@@ -12,8 +12,8 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMessageBox
 
 __author__ = "ACE Faculty"
-__version__ = "1.0.0"
-__credits__ = ""
+__version__ = "3.12.7"
+__credits__ = "Hudson Drozdowski"
 
 class ContactList(QMainWindow):
     """Represents a window that provides the UI to manage contacts."""

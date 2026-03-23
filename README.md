@@ -13,4 +13,7 @@ Hudson Drozdowski
 
 ## Additional Information
 
-[ Use this space to include additional information that may help in your learning. ]
+### 3 Components used in this activity:
+- Gui: We used PySide6 to create an interactive GUI for the program.
+- Event Handling: I implemented event handling using signals and slot methods. For ex the on_remove_contact and on_add_contact methods.
+- PySide6: Practiced using multiple PySide6 widgets including QTableWidget, QMessageBox, QVBoxLayout, QLabel, ect.
