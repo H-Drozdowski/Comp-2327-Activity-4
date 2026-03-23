@@ -86,13 +86,16 @@ class ContactList(QMainWindow):
 
     @Slot()
     def __on_remove_contact(self) -> None:
-        """"""
+        """Removes the selected row from the contact table when the 
+        remove button is pressed."""
 
         current_selected_row = self.contact_table.currentRow()
 
         if current_selected_row >= 0:
-            question_response = QMessageBox.question(self, 
-                                                    "Remove Contact", 
+            question_response = QMessageBox.question(self, "Remove Contact", 
                                                     "Are you sure you want to remove the selected contact?")
             if question_response == QMessageBox.Yes:
                 self.contact_table.removeRow(current_selected_row)
+                self.status_label.setText("Contact removed.")
+        else:
+            self.status_label.setText("Please select a row to be removed.")
