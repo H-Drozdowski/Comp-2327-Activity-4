@@ -9,6 +9,7 @@ from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtWidgets import QWidget
 from PySide6.QtWidgets import QTableWidgetItem
 from PySide6.QtCore import Slot
+from PySide6.QtWidgets import QMessageBox
 
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
@@ -23,6 +24,7 @@ class ContactList(QMainWindow):
         super().__init__()
         self.__initialize_widgets()     
         self.add_button.clicked.connect(self.__on_add_contact) 
+        self.remove_button.clicked.connect(self.__on_remove_contact)
 
     def __initialize_widgets(self):
         """Initializes the widgets on this Window.
@@ -81,3 +83,16 @@ class ContactList(QMainWindow):
             self.status_label.setText(f"Added contact: {name_text}")
         else:
             self.status_label.setText("Please enter a contact name and phone number.")
+
+    @Slot()
+    def __on_remove_contact(self) -> None:
+        """"""
+
+        current_selected_row = self.contact_table.currentRow()
+
+        if current_selected_row >= 0:
+            question_response = QMessageBox.question(self, 
+                                                    "Remove Contact", 
+                                                    "Are you sure you want to remove the selected contact?")
+            if question_response == QMessageBox.Yes:
+                self.contact_table.removeRow(current_selected_row)
