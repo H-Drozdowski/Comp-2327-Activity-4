@@ -64,7 +64,7 @@ class ContactList(QMainWindow):
     @Slot()
     def __on_add_contact(self) -> None:
         """Validates and adds a contact to the contact list if the 
-        contact is valid. Connected to the click event of a QPushButton.
+        contact is valid. Connected to the clicked event of a QPushButton.
         """
 
         name_text = self.contact_name_input.text()
@@ -87,7 +87,8 @@ class ContactList(QMainWindow):
     @Slot()
     def __on_remove_contact(self) -> None:
         """Removes the selected row from the contact table when the 
-        remove button is pressed."""
+        remove button is pressed. Connected to the clicked even of a 
+        QPushButton."""
 
         current_selected_row = self.contact_table.currentRow()
 
@@ -99,3 +100,4 @@ class ContactList(QMainWindow):
                 self.status_label.setText("Contact removed.")
         else:
             self.status_label.setText("Please select a row to be removed.")
+            
