@@ -77,3 +77,7 @@ class ContactList(QMainWindow):
 
             self.contact_table.setItem(num_of_rows, 0, name_item)
             self.contact_table.setItem(num_of_rows, 1, phone_number_item)
+
+            self.status_label.setText(f"Added contact: {name_text}")
+        else:
+            self.status_label.setText("Please enter a contact name and phone number.")
