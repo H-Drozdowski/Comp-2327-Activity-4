@@ -7,6 +7,8 @@ from PySide6.QtWidgets import QTableWidget
 from PySide6.QtWidgets import QLabel
 from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QTableWidgetItem
+from PySide6.QtCore import Slot
 
 __author__ = "ACE Faculty"
 __version__ = "1.0.0"
@@ -19,7 +21,8 @@ class ContactList(QMainWindow):
         """Initializes a new instance of the ContactList class."""
 
         super().__init__()
-        self.__initialize_widgets()      
+        self.__initialize_widgets()     
+        self.add_button.clicked.connect(self.__on_add_contact) 
 
     def __initialize_widgets(self):
         """Initializes the widgets on this Window.
@@ -55,3 +58,22 @@ class ContactList(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
+
+    @Slot()
+    def __on_add_contact(self) -> None:
+        """Validates and adds a contact to the contact list if the 
+        contact is valid. Connected to the click event of a QPushButton.
+        """
+
+        name_text = self.contact_name_input.text()
+        phone_number = self.phone_input.text()
+
+        if name_text.strip() != "" and phone_number.strip() != "":
+            num_of_rows = self.contact_table.rowCount()
+            self.contact_table.insertRow(num_of_rows)
+
+            name_item = QTableWidgetItem(name_text)
+            phone_number_item = QTableWidgetItem(phone_number)
+
+            self.contact_table.setItem(num_of_rows, 0, name_item)
+            self.contact_table.setItem(num_of_rows, 1, phone_number_item)
